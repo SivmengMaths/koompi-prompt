@@ -1,0 +1,71 @@
+#!/bin/bash
+
+## =================
+## USER'S INFO
+## =================
+
+host="$(cat /etc/hostname)"
+user="$USER"
+kernel="$(uname -sr)"
+packages="$(pacman -Q | wc -l)"
+uptime="$(uptime -p | sed 's/up //')"
+shell="$(basename $SHELL)"
+
+
+## TODO
+## Draw a bunch of characters beneath
+## user's name. For example:
+##    koompi@khmer
+##    ============
+length=$(echo ${user}@${host} | wc -c)
+strings=""
+char="="
+i=2
+while [[ $i -le $length ]]; do
+	strings=${strings}${char}
+	i=$((i+1))
+done
+
+## FIXME
+#terminal="$(echo $TERM)"
+terminal="Konsole"
+os="KOOMPI OS"
+wm="KDE"
+
+## =================
+## COLORS
+## =================
+bold="$(tput bold)"
+black="$(tput setaf 0)"
+red="$(tput setaf 1)"
+green="$(tput setaf 2)"
+yellow="$(tput setaf 3)"
+blue="$(tput setaf 4)"
+magenta="$(tput setaf 5)"
+cyan="$(tput setaf 6)"
+white="$(tput setaf 7)"
+reset="$(tput sgr0)"
+
+## (change to whatever color you like)
+c0="${reset}"
+c1="${reset}${bold}${green}"
+c2="${reset}${bold}${yellow}"
+c3="${reset}${cyan}"
+c4="${reset}${bold}${magenta}"
+
+
+cat << EOF
+${c1}           *  *
+${c1}          *@  @*            ${c4}${user}@${host}
+${c1}        .0@@  @@0.          ${c1}${strings}
+${c1}      .0@@@@  @@@@0.
+${c1}    .0@@@@@0  0@@@@@0.      ${c2}OS       : ${c3}${os}
+${c1}*@0@@@@@@00    00@@@@@@0@*  ${c2}KERNEL   : ${c3}${kernel}
+${c1}                            ${c2}SHELL    : ${c3}${shell}
+${c1}*@0@@@@@@00    00@@@@@@0@*  ${c2}PACKAGES : ${c3}${packages}
+${c1}    *0@@@@@@  @@@@@@0*      ${c2}WM       : ${c3}${wm}
+${c1}      .0@@@@  @@@@0.        ${c2}TERMINAL : ${c3}${terminal}
+${c1}        .0@@  @@0.          ${c2}UPTIME   : ${c3}${uptime}
+${c1}          *@  @*
+${c1}           *  *
+EOF

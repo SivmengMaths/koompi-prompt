@@ -1,0 +1,37 @@
+==================================
+|         KOOMPI PROMPT          |
+==================================
+
+Koompi is the first community ever in Cambodia to take
+action  about free and open source softwares, and successfully
+created their own Operating System (OS) over Arch Linux
+called Kroma OS.
+
+I am really fascinated about Koompi, and I hope that I would
+somehow be accepted to join their community. And that's why
+I want to write this script.
+
+It is just a shell script, and most of them are copied from
+<ufetch>. The Koompi logo, on the other hand, is rendered by
+a programm call <jp2a>. Issue the following command:
+
+$ jp2a --width=30 --chars="   .*@*0@" koompi.jpg
+             *  *
+            *@  @0
+          .0@@  @@@.
+        .0@@@@  @@@@0.
+      @0@@@@@0  0@@@@@0@
+  *@0@@@@@@0@    @0@@@@@@0@*
+
+  .@0@@@@@@@*    @0@@@@@@0@.
+      *0@@@@@@  @@@@@@0*
+        .0@@@@  @@@@0.
+          .0@@  @@0.
+            *@  @*
+             *  *
+
+I really hope you'll like it.
+
+--- Meng Sivmeng.
+
+
